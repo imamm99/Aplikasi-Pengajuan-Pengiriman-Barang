@@ -134,6 +134,40 @@ composer --version
 composer install
 ```
 
+### Error: Folder Vendor Corrupt atau Tidak Lengkap
+**Penyebab**: Cache composer bermasalah, download terputus, atau antivirus blocking
+
+**Solusi - Install Ulang Vendor:**
+
+**Di Git Bash / Linux / Mac:**
+```bash
+# 1. Hapus folder vendor yang corrupt
+rm -rf vendor/
+
+# 2. Clear cache composer
+composer clear-cache
+
+# 3. Install ulang
+composer install --no-cache
+```
+
+**Di Windows PowerShell:**
+```powershell
+# 1. Hapus folder vendor yang corrupt
+Remove-Item -Recurse -Force vendor
+
+# 2. Clear cache composer
+composer clear-cache
+
+# 3. Install ulang
+composer install --no-cache
+```
+
+**Tips Tambahan:**
+- Jalankan sebagai **Administrator** jika ada error permission
+- Tambahkan folder vendor ke **exclusion list antivirus** (Windows Defender sering blocking)
+- Update composer: `composer self-update`
+
 ### Error: "Table doesn't exist"
 Pastikan Anda sudah import `tugas_kelompok.sql`:
 ```bash
