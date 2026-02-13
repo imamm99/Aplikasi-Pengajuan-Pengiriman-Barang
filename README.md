@@ -30,8 +30,8 @@ Aplikasi manajemen pengajuan pengiriman dengan sistem role-based (Admin & Pengaj
 
 ### 1. Clone Repository
 ```bash
-git clone <repository-url>
-cd tugas_kelompok
+git clone https://github.com/imamm99/Aplikasi-Pengajuan-Pengiriman-Barang.git
+cd Aplikasi-Pengajuan-Pengiriman-Barang
 ```
 
 ### 2. Install Dependencies (WAJIB!)
@@ -51,7 +51,7 @@ cp .env.example .env
 # - DB_PASSWORD: Password database (kosongkan jika tidak ada)
 # - DB_NAME: Nama database (default: tugas_kelompok)
 # - DB_PORT: Port MySQL (default: 3306)
-# - BASE_PATH: Path aplikasi (misal: /tugas_kelompok)
+# - BASE_PATH: Path aplikasi (sesuaikan dengan nama folder, contoh: /Aplikasi-Pengajuan-Pengiriman-Barang)
 # - THEME: Theme yang digunakan (default: adminkit)
 ```
 
@@ -85,8 +85,10 @@ File `tugas_kelompok.sql` sudah berisi beberapa user yang bisa langsung digunaka
 
 ### 6. Akses Aplikasi
 ```
-http://localhost/tugas_kelompok/
+http://localhost/Aplikasi-Pengajuan-Pengiriman-Barang/
 ```
+
+Atau sesuaikan dengan `BASE_PATH` yang Anda set di file `.env`.
 
 ## 🔐 Default Credentials
 
