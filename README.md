@@ -56,15 +56,40 @@ cp .env.example .env
 ```
 
 ### 4. Setup Database
-```bash
-# Buat database terlebih dahulu
-mysql -u root -p
-CREATE DATABASE tugas_kelompok;
-exit;
 
-# Import database lengkap (sudah termasuk user dan sample data)
-mysql -u root -p tugas_kelompok < tugas_kelompok.sql
+Pilih salah satu metode berikut:
+
+#### **Metode 1: Via phpMyAdmin (Termudah untuk Windows)**
+
+1. Buka browser, akses `http://localhost/phpmyadmin`
+2. Klik tab **SQL**
+3. Paste dan jalankan:
+   ```sql
+   CREATE DATABASE tugas_kelompok;
+   ```
+4. Pilih database `tugas_kelompok` yang baru dibuat
+5. Klik tab **Import**
+6. Klik **Choose File**, pilih `tugas_kelompok.sql`
+7. Klik **Go**
+8. ✅ Selesai!
+
+#### **Metode 2: Via Command Line (Git Bash / CMD / PowerShell)**
+
+**Jika TIDAK ada password MySQL:**
+```bash
+# Buat database dan import sekaligus
+mysql -u root -e "CREATE DATABASE IF NOT EXISTS tugas_kelompok"
+mysql -u root tugas_kelompok < tugas_kelompok.sql
 ```
+
+**Jika ADA password MySQL:**
+```bash
+# Ganti 'password' dengan password MySQL Anda
+mysql -u root -ppassword -e "CREATE DATABASE IF NOT EXISTS tugas_kelompok"
+mysql -u root -ppassword tugas_kelompok < tugas_kelompok.sql
+```
+
+⚠️ **Catatan**: Tidak ada spasi antara `-p` dan password!
 
 ### 5. Login dengan User yang Tersedia
 
