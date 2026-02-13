@@ -1,0 +1,49 @@
+{
+    "roles": {
+        "admin": {
+            "label": "Admin",
+            "dashboard": "admin/index.php",
+            "permissions": [
+                "read",
+                "create",
+                "update",
+                "delete",
+                "verify"
+            ]
+        },
+        "pengaju": {
+            "label": "Pengaju",
+            "dashboard": "pengaju/index.php",
+            "permissions": [
+                "read",
+                "create",
+                "update",
+                "delete"
+            ]
+        }
+    },
+    "modules": {
+        "transaksi_pengiriman": {
+            "label": "Pengiriman",
+            "icon": "truck",
+            "allowed_roles": [
+                "admin",
+                "pengaju"
+            ]
+        },
+        "barang": {
+            "label": "Barang",
+            "icon": "package",
+            "allowed_roles": [
+                "admin"
+            ]
+        },
+        "kategori_barang": {
+            "label": "Kategori Barang",
+            "icon": "list",
+            "allowed_roles": [
+                "admin"
+            ]
+        }
+    }
+}
