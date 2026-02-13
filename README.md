@@ -34,7 +34,13 @@ git clone <repository-url>
 cd tugas_kelompok
 ```
 
-### 2. Setup Environment
+### 2. Install Dependencies (WAJIB!)
+```bash
+composer install
+```
+⚠️ **PENTING**: Folder `vendor/` tidak ada di GitHub (diabaikan oleh .gitignore). Anda **HARUS** menjalankan `composer install` terlebih dahulu, jika tidak aplikasi akan error!
+
+### 3. Setup Environment
 ```bash
 # Copy file .env.example menjadi .env
 cp .env.example .env
@@ -49,11 +55,6 @@ cp .env.example .env
 # - THEME: Theme yang digunakan (default: adminkit)
 ```
 
-### 3. Install Dependencies
-```bash
-composer install
-```
-
 ### 4. Setup Database
 ```bash
 # Buat database terlebih dahulu
@@ -62,27 +63,27 @@ CREATE DATABASE tugas_kelompok;
 exit;
 
 # Import schema database
-mysql -u root -p tugas_kelompok < database.sql
+mysql -u root -p tugas_kelompok < tugas_kelompok.sql
 ```
 
 ### 5. Buat User Login
-Karena `database.sql` tidak berisi user, Anda perlu membuat user manual:
+Karena `tugas_kelompok.sql` tidak berisi user, Anda perlu membuat user manual:
+
+**Via Registrasi (Cara termudah):**
+1. Akses `http://localhost/tugas_kelompok/register.php`
+2. Daftar sebagai admin atau pengaju
+3. Login dengan kredensial yang dibuat
 
 **Via phpMyAdmin atau MySQL CLI:**
 ```sql
 -- Admin user (password: admin123)
 INSERT INTO users (username, password, role) 
-VALUES ('admin', '$2y$10$YourHashedPasswordHere', 'admin');
+VALUES ('admin', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'admin');
 
 -- Pengaju user (password: pengaju123)
 INSERT INTO users (username, password, role) 
-VALUES ('pengaju', '$2y$10$YourHashedPasswordHere', 'pengaju');
+VALUES ('pengaju', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'pengaju');
 ```
-
-**Atau registrasi via aplikasi:**
-1. Akses `http://localhost/tugas_kelompok/register.php`
-2. Daftar sebagai admin atau pengaju
-3. Login dengan kredensial yang dibuat
 
 ### 6. Akses Aplikasi
 ```
@@ -122,10 +123,22 @@ Aplikasi menggunakan AdminKit Bootstrap template. Untuk mengganti theme:
 
 ## 🔧 Troubleshooting
 
-### Error: "Table doesn't exist"
-Pastikan Anda sudah import `database.sql`:
+### Error: "vendor/autoload.php not found" atau "Class not found"
+**Penyebab**: Folder `vendor/` tidak ada karena diabaikan oleh `.gitignore`
+
+**Solusi**:
 ```bash
-mysql -u root -p tugas_kelompok < database.sql
+# Pastikan composer terinstall
+composer --version
+
+# Install dependencies
+composer install
+```
+
+### Error: "Table doesn't exist"
+Pastikan Anda sudah import `tugas_kelompok.sql`:
+```bash
+mysql -u root -p tugas_kelompok < tugas_kelompok.sql
 ```
 
 ### Error: "Connection refused"
@@ -138,7 +151,7 @@ Cek apakah:
 Cek:
 - PHP version (minimum 7.4)
 - File `.env` sudah ada dan terisi dengan benar
-- `composer install` sudah dijalankan
+- `composer install` sudah dijalankan ← **INI SERING TERLUPAKAN!**
 - Error log di `C:\xampp\apache\logs\error.log`
 
 ## 📝 Development
