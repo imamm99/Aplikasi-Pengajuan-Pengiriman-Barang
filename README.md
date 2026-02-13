@@ -62,28 +62,26 @@ mysql -u root -p
 CREATE DATABASE tugas_kelompok;
 exit;
 
-# Import schema database
+# Import database lengkap (sudah termasuk user dan sample data)
 mysql -u root -p tugas_kelompok < tugas_kelompok.sql
 ```
 
-### 5. Buat User Login
-Karena `tugas_kelompok.sql` tidak berisi user, Anda perlu membuat user manual:
+### 5. Login dengan User yang Tersedia
 
-**Via Registrasi (Cara termudah):**
+File `tugas_kelompok.sql` sudah berisi beberapa user yang bisa langsung digunakan:
+
+| Username | Password | Role |
+|----------|----------|------|
+| admin | 123 | admin |
+| pengaju | 123 | pengaju |
+| pengaju1 | 123 | pengaju |
+
+⚠️ **Catatan Keamanan**: Ganti password default ini setelah login pertama!
+
+**Atau buat user baru via Registrasi:**
 1. Akses `http://localhost/tugas_kelompok/register.php`
 2. Daftar sebagai admin atau pengaju
 3. Login dengan kredensial yang dibuat
-
-**Via phpMyAdmin atau MySQL CLI:**
-```sql
--- Admin user (password: admin123)
-INSERT INTO users (username, password, role) 
-VALUES ('admin', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'admin');
-
--- Pengaju user (password: pengaju123)
-INSERT INTO users (username, password, role) 
-VALUES ('pengaju', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'pengaju');
-```
 
 ### 6. Akses Aplikasi
 ```
@@ -92,11 +90,12 @@ http://localhost/tugas_kelompok/
 
 ## 🔐 Default Credentials
 
-Jika Anda menggunakan `database_with_data.sql` (jika tersedia), gunakan:
+User yang tersedia di `tugas_kelompok.sql`:
 - **Admin**: username: `admin`, password: `123`
 - **Pengaju**: username: `pengaju`, password: `123`
+- **Pengaju1**: username: `pengaju1`, password: `123`
 
-⚠️ **Ganti password default segera setelah login pertama!**
+⚠️ **Ganti password default segera setelah login pertama untuk keamanan!**
 
 ## 📁 Struktur Folder
 
